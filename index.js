@@ -404,17 +404,9 @@ const questions = [
     }
 ];
 
-// =======================
-// СОСТОЯНИЕ
-// =======================
-
 let currentIndex = 0;
 let answers = []; // { question, answer, points }
 let totalScore = 0;
-
-// =======================
-// DOM
-// =======================
 
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
@@ -431,10 +423,6 @@ function updateProgress() {
     const progress = ((currentIndex + 1) / questions.length) * 100;
     progressBar.style.width = `${progress}%`;
 }
-
-// =======================
-// РЕНДЕР
-// =======================
 
 function renderQuestion() {
     const q = questions[currentIndex];
@@ -518,10 +506,6 @@ function renderQuestion() {
     }
 }
 
-// =======================
-// КНОПКИ
-// =======================
-
 nextBtn.addEventListener("click", () => {
     if (!answers[currentIndex]) return;
 
@@ -539,10 +523,6 @@ backBtn.addEventListener("click", () => {
     currentIndex--;
     renderQuestion();
 });
-
-// =======================
-// РЕЗУЛЬТАТ
-// =======================
 
 function getResultByScore(score) {
     if (score >= 47) {
@@ -604,9 +584,6 @@ function getResultByScore(score) {
     };
 }
 
-// =======================
-// ШАРИНГ
-// =======================
 let confettiCanvas;
 let confettiCtx;
 let confettiParticles = [];
@@ -775,20 +752,11 @@ function showResult() {
     `;
 }
 
-
-// =======================
-// РЕСТАРТ
-// =======================
-
 function restart() {
     currentIndex = 0;
     answers = [];
     totalScore = 0;
     location.reload();
 }
-
-// =======================
-// СТАРТ
-// =======================
 
 renderQuestion();
