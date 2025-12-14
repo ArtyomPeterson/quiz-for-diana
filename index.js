@@ -410,9 +410,10 @@ let totalScore = 0;
 
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
+const startBtn = document.getElementById("startBtn");
 const nextBtn = document.getElementById("nextBtn");
 const backBtn = document.getElementById("backBtn");
-const app = document.getElementById("app");
+const app = document.getElementById("quiz");
 const progressBar = document.getElementById("progressBar");
 
 // =======================
@@ -505,6 +506,12 @@ function renderQuestion() {
         optionsEl.appendChild(textarea);
     }
 }
+
+startBtn.addEventListener("click", () => {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+    renderQuestion();
+});
 
 nextBtn.addEventListener("click", () => {
     if (!answers[currentIndex]) return;
@@ -739,8 +746,9 @@ function showResult() {
             <p>${result.text}</p>
 
             <p style="margin-top:20px;">
-                Чтобы получить награду, системе нужно визуальное подтверждение 📸
                 <br><br>
+                Чтобы получить награду, системе нужно визуальное подтверждение 📸
+                <br>
                 Отправь Артёму селфи и поделись с ним результатом теста 🥰
             </p>
         
