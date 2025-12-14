@@ -1,4 +1,15 @@
-﻿* {
+﻿#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+
+* {
     box-sizing: border-box;
 }
 
@@ -23,6 +34,7 @@ h2 {
 }
 
 .option {
+    position: relative;
     padding: 14px 18px;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -30,6 +42,23 @@ h2 {
     cursor: pointer;
     transition: 0.2s;
 }
+
+.option .hint {
+    display: none;
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #444;
+    background: #f9fafb;
+    border-left: 3px solid #6366f1;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+.option.selected .hint {
+    display: block;
+}
+
 
 .option:hover {
     background: #f1f1f1;
@@ -39,6 +68,36 @@ h2 {
     border-color: #6366f1;
     background: #eef2ff;
 }
+
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px 18px;
+    font-size: 16px;
+    line-height: 1.5;
+
+    border-radius: 16px;
+    border: 1.5px solid #e5e7eb;
+    background: #fafafa;
+
+    color: #111827;
+    resize: vertical;
+    outline: none;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+textarea:focus {
+    background: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
 
 .explanation {
     margin-top: 24px;
@@ -50,17 +109,43 @@ h2 {
     line-height: 1.6;
 }
 
-.next {
+.buttons {
+    display: flex;
+    gap: 12px;
     margin-top: 24px;
-    padding: 14px;
-    width: 100%;
-    border: none;
-    border-radius: 12px;
+
+    button {
+        margin-top: 24px;
+        padding: 14px;
+        flex: 1;
+        border: none;
+        border-radius: 12px;
+        background: #6366f1;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        transition: 0.2s;
+    }
+
+    .next:disabled {
+        background: #c7c7c7;
+        cursor: not-allowed;
+    }
+}
+
+.progress {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
     background: #6366f1;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    display: none;
+    transition: width 0.3s ease;
 }
 
 .result {
